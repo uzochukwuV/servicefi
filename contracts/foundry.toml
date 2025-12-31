@@ -1,0 +1,26 @@
+[profile.default]
+src = "contracts"
+out = "out"
+libs = ["node_modules", "lib"]
+solc_version = "0.8.28"
+optimizer = true
+optimizer_runs = 200
+via_ir = false
+
+# Gas optimization settings
+gas_reports = ["ServiceCreditToken", "LiquidityPool", "RedemptionOracle"]
+gas_price = 1000000  # 1 gwei - typical Mantle gas price
+
+# Testing
+fuzz_runs = 256
+fuzz_max_test_rejects = 65536
+
+# RPC endpoints
+[rpc_endpoints]
+mantle = "${MANTLE_RPC_URL}"
+mantle_testnet = "https://rpc.testnet.mantle.xyz"
+
+# Etherscan verification
+[etherscan]
+mantle = { key = "${MANTLE_EXPLORER_API_KEY}", url = "https://explorer.mantle.xyz/api" }
+mantle_testnet = { key = "${MANTLE_EXPLORER_API_KEY}", url = "https://explorer.testnet.mantle.xyz/api" }

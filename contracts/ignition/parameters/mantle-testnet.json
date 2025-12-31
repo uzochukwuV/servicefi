@@ -1,0 +1,7 @@
+{
+  "ServiceFiModule": {
+    "metadataUri": "https://api.servicefi.io/metadata/{id}.json",
+    "discountBps": 1000,
+    "minLockPeriod": 604800
+  }
+}
