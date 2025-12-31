@@ -85,7 +85,7 @@ function PortfolioCard({
   const { useIsPositionUnlocked } = useLiquidityPool();
   const isUnlocked = useIsPositionUnlocked(userAddress, positionIndex);
 
-  const amount = formatEther(position.amount || 0n);
+  const amount = formatEther(position.amount || BigInt(0));
   const lockPeriodDays = Number(position.lockPeriod) / (24 * 60 * 60);
   const depositTimestamp = Number(position.depositTimestamp);
   const unlockTimestamp = depositTimestamp + Number(position.lockPeriod);
@@ -95,7 +95,7 @@ function PortfolioCard({
 
   const now = Math.floor(Date.now() / 1000);
   const daysRemaining = Math.max(0, Math.ceil((unlockTimestamp - now) / (24 * 60 * 60)));
-  const canWithdraw = isUnlocked.data === true || now >= unlockTimestamp;
+  const canWithdraw = isUnlocked.data?.[0] === true || now >= unlockTimestamp;
 
   // Calculate estimated returns (simplified - actual returns from redemptions)
   const estimatedYield = parseFloat(amount) * 0.15; // Placeholder 15% estimated yield

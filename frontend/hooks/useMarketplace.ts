@@ -200,7 +200,7 @@ export function useMarketplace() {
     return useWatchContractEvent({
       address: MARKETPLACE_ADDRESS,
       abi: ServiceTokenMarketplaceABI,
-      eventName: "ListingSold",
+      eventName: "ListingPurchased",
       onLogs,
       chainId: mantleSepoliaTestnet.id,
     });

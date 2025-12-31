@@ -44,12 +44,12 @@ export function InvestorStats() {
   // Calculate total invested from LP positions
   const positions = lpPositions.data as any[] || [];
   const totalInvested = positions.reduce((sum, pos) => {
-    return sum + Number(formatEther(pos.amount || 0n));
+    return sum + Number(formatEther(pos.amount || BigInt(0)));
   }, 0);
 
   // Get user stats if available
-  const userTotalStake = userLPStats.data ? formatEther((userLPStats.data as any)[0] || 0n) : "0";
-  const userTotalRewards = userLPStats.data ? formatEther((userLPStats.data as any)[1] || 0n) : "0";
+  const userTotalStake = userLPStats.data ? formatEther((userLPStats.data as any)[0] || BigInt(0)) : "0";
+  const userTotalRewards = userLPStats.data ? formatEther((userLPStats.data as any)[1] || BigInt(0)) : "0";
 
   // Get current yield rate
   const yieldRate = currentYield.data ? Number(currentYield.data) / 100 : 0;

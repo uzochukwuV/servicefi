@@ -53,7 +53,7 @@ export function TransactionHistory() {
               { type: 'uint256', indexed: false, name: 'value' },
             ],
           },
-          fromBlock: 0n,
+          fromBlock: BigInt(0),
           toBlock: 'latest',
         });
 
@@ -116,7 +116,7 @@ export function TransactionHistory() {
                 { type: 'uint256', indexed: false, name: 'amount' },
               ],
             },
-            fromBlock: 0n,
+            fromBlock: BigInt(0),
             toBlock: 'latest',
           });
 

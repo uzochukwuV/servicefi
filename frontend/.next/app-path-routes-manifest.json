@@ -1,0 +1,17 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/about/page": "/about",
+  "/admin/page": "/admin",
+  "/api/upload-metadata/route": "/api/upload-metadata",
+  "/api/upload-url/route": "/api/upload-url",
+  "/business/page": "/business",
+  "/business/register/page": "/business/register",
+  "/customer/page": "/customer",
+  "/favicon.ico/route": "/favicon.ico",
+  "/how-it-works/page": "/how-it-works",
+  "/investor/page": "/investor",
+  "/marketplace/page": "/marketplace",
+  "/orderbook/page": "/orderbook",
+  "/page": "/"
+}
