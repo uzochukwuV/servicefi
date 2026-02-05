@@ -1,0 +1,14 @@
+{
+  "name": "Startup Tech Co",
+  "profile": "high_growth_startup",
+  "financialData": {
+    "monthly_revenue": 25000,
+    "revenue_growth": 0.35,
+    "bank_balance": 50000,
+    "avg_receivables_days": 45,
+    "payment_on_time_rate": 0.92,
+    "business_age_months": 14,
+    "outstanding_invoices": 30000,
+    "customer_count": 12
+  }
+}

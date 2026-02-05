@@ -1,0 +1,14 @@
+{
+  "name": "Acme Services LLC",
+  "profile": "established_business",
+  "financialData": {
+    "monthly_revenue": 75000,
+    "revenue_growth": 0.12,
+    "bank_balance": 180000,
+    "avg_receivables_days": 28,
+    "payment_on_time_rate": 0.96,
+    "business_age_months": 48,
+    "outstanding_invoices": 95000,
+    "customer_count": 35
+  }
+}

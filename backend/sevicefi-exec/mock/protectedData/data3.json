@@ -1,0 +1,14 @@
+{
+  "name": "Struggling Retail",
+  "profile": "at_risk_business",
+  "financialData": {
+    "monthly_revenue": 15000,
+    "revenue_growth": -0.15,
+    "bank_balance": 5000,
+    "avg_receivables_days": 75,
+    "payment_on_time_rate": 0.72,
+    "business_age_months": 36,
+    "outstanding_invoices": 25000,
+    "customer_count": 8
+  }
+}
