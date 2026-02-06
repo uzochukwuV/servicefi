@@ -344,27 +344,50 @@ Customer A bought haircut token but moved to new city:
 └─────────────────────────────────────────────────────────┘
 ```
 
-### Privacy Layer (Reclaim Protocol)
+### Privacy Layer (Dual-Layer: Reclaim + iExec)
+
+ServiceFi uses a **dual-layer privacy architecture**:
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│            Reclaim Protocol Integration                  │
+│      LAYER 1: Reclaim Protocol (zkTLS Verification)     │
 ├─────────────────────────────────────────────────────────┤
+│  Purpose: Prove data EXISTS (boolean proofs)            │
 │                                                          │
 │  Custom Providers (zkTLS Proofs)                        │
 │  ├─ Stripe Revenue (monthly revenue >= threshold)       │
 │  ├─ Google Business Rating (rating >= X stars)          │
 │  ├─ QuickBooks Revenue (annual >= threshold)            │
-│  ├─ Amazon Purchase History (lifetime spend >= X)       │
-│  ├─ Uber Rating (rider rating >= X)                     │
 │  └─ Tax Returns (income >= X for accreditation)         │
 │                                                          │
-│  Smart Contracts                                         │
-│  ├─ ReclaimBusinessVerifier.sol                         │
-│  ├─ ReclaimReputationScore.sol                          │
-│  └─ ReclaimAccreditedInvestor.sol                       │
+│  Output: "Revenue > $10K?" → YES/NO (no exact values)   │
 │                                                          │
 └─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│      LAYER 2: iExec TEE (Confidential Computing)        │
+├─────────────────────────────────────────────────────────┤
+│  Purpose: PROCESS sensitive data inside secure enclave  │
+│                                                          │
+│  Confidential Credit Scoring iApp (SGX/TDX)             │
+│  ├─ Input: Encrypted financials (revenue, balance...)   │
+│  ├─ Process: 7-factor scoring algorithm                 │
+│  └─ Output: Score (0-1000), Tier (A-F), Attestation     │
+│                                                          │
+│  Privacy Guarantees:                                    │
+│  ├─ Raw data NEVER leaves TEE enclave                   │
+│  ├─ Only aggregated results on-chain                    │
+│  ├─ Hardware-enforced isolation (Intel SGX/TDX)         │
+│  └─ Cryptographic attestation of secure execution       │
+│                                                          │
+│  Location: backend/sevicefi-exec/                       │
+│                                                          │
+└─────────────────────────────────────────────────────────┘
+
+Combined Flow:
+  1. Reclaim: Gates access (prove minimum revenue threshold)
+  2. iExec:   Computes detailed credit score privately
+  3. Chain:   Stores only score + tier + attestation
 ```
 
 ### Frontend Layer (Next.js)
@@ -431,12 +454,21 @@ Customer A bought haircut token but moved to new city:
 
 ### 🚧 In Progress
 
-#### Privacy Layer (Reclaim Protocol)
+#### Privacy Layer - Reclaim Protocol (zkTLS)
 - 🚧 Business credential verification (Stripe, Google)
 - 🚧 Customer reputation system (Amazon, Uber)
 - 🚧 LP accredited investor verification (tax returns)
 - 🚧 6 custom zkTLS providers
 - 🚧 Grant application submitted
+
+#### Privacy Layer - iExec TEE (Confidential Computing)
+- ✅ Confidential Credit Scoring iApp deployed
+- ✅ 7-factor scoring algorithm (SGX/TDX compatible)
+- ✅ Protected data handling (bulk processing)
+- ✅ TEE attestation generation
+- 🚧 Smart contract callback integration
+- 🚧 Frontend credit request flow
+- 🚧 Hack4Privacy hackathon submission
 
 #### Smart Contract Enhancements
 - 🚧 Multi-signature admin controls
