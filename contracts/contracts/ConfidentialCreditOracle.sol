@@ -34,7 +34,7 @@ contract ConfidentialCreditOracle is AccessControl, ReentrancyGuard {
     struct CreditScore {
         uint16 score;              // 0-1000 credit score
         RiskTier riskTier;         // A/B/C/D/F classification
-        uint256 maxCreditLine;     // Maximum credit in wei (USDC 6 decimals)
+        uint256 maxCreditLine;     // Maximum credit in wei (MNT 18 decimals)
         uint16 confidence;         // 0-10000 (basis points)
         uint64 computedAt;         // Timestamp of computation
         uint64 expiresAt;          // Score validity expiration

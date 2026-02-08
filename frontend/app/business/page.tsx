@@ -288,13 +288,18 @@ export default function BusinessDashboard() {
                       <label className="block text-sm font-medium mb-2">Price per Token (MNT) *</label>
                       <input
                         type="number"
-                        step="0.01"
+                        step="0.001"
                         min="0"
-                        placeholder="0.00"
+                        placeholder="0.50"
                         value={serviceForm.price}
                         onChange={(e) => setServiceForm({...serviceForm, price: e.target.value})}
                         className="w-full px-4 py-2 border border-input bg-background rounded-md"
                       />
+                      <p className="text-xs text-muted-foreground mt-1">
+                        {serviceForm.price && !isNaN(parseFloat(serviceForm.price))
+                          ? `≈ $${(parseFloat(serviceForm.price) * 100).toFixed(2)} USD (1 MNT ≈ $100)`
+                          : 'Example: 0.5 MNT ≈ $50 USD'}
+                      </p>
                     </div>
 
                     <div>
@@ -345,6 +350,9 @@ export default function BusinessDashboard() {
                             <div>
                               <span className="text-muted-foreground text-xs">Price</span>
                               <p className="font-bold text-accent">{serviceForm.price} MNT</p>
+                              {serviceForm.price && !isNaN(parseFloat(serviceForm.price)) && (
+                                <p className="text-xs text-muted-foreground">≈ ${(parseFloat(serviceForm.price) * 100).toFixed(2)}</p>
+                              )}
                             </div>
                             <div>
                               <span className="text-muted-foreground text-xs">Max Supply</span>
